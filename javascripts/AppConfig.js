@@ -14,7 +14,15 @@ app.config(function($routeProvider){
 		})
 		.when('/items/new', {
 			templateUrl: "partials/item-new.html",
+			controller: "ItemNewCtrl"
+		})
+		.when('/items/view/:id', {
+			templateUrl: "partials/item-view.html",
 			controller: "ItemViewCtrl"
+		})
+		.when("/items/edit/:id", {
+			templateUrl: "partials/item-new.html",
+			controller: "ItemEditCtrl"
 		})
 		.otherwise('/items/list');
 });
@@ -26,3 +34,4 @@ app.config(function($routeProvider){
 // $route is used for deep-linking URLs to controllers and views (HTML partials). It watches $location.url() and tries to map the path to an existing route definition.
 // Requires the ngRoute module to be installed.
 //ngView is a directive that complements the $route service by including the rendered template of the current route into the main layout (index.html) file. Every time the current route changes, the included view changes with it according to the configuration of the $route service 
+//:id tells it it will change

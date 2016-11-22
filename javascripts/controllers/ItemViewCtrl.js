@@ -1,17 +1,11 @@
 "use strict";
 
-app.controller("ItemViewCtrl", function($scope, $location, ItemFactory){
-	
-	$scope.newTask = {};
+app.controller("ItemViewCtrl", function($scope, $routeParams, ItemFactory){
+	$scope.selectedItem = {};
+	let itemId = $routeParams.id;
 
-	$scope.addNewItem = function(){
-		$scope.newTask.isCompleted = false;
-		ItemFactory.postNewItem($scope.newTask).then(function(itemId){
-			$location.url("/items/list");
-			$scope.newTask = {};
-		});
-	};
-
+	ItemFactory.getSingleItem(itemId).then(function(oneItem){
+		oneItem.id = itemId;
+		$scope.selectedItem = oneItem;
+	});
 });
-
-//$location
