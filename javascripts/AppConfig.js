@@ -8,6 +8,10 @@ app.run(function(FIREBASE_CONFIG){
 //$routeProvider show the different views {}
 app.config(function($routeProvider){
 	$routeProvider
+		.when("/auth/:id", {
+			templateUrl: "partials/auth.html",
+			controller: "AuthCtrl"
+		})
 		.when('/items/list', {
 			templateUrl: "partials/item-list.html",
 			controller: "ItemListCtrl"
